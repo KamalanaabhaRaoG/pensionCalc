@@ -48,12 +48,15 @@ public class CalcService {
 		}
 		for(String q:queryList)
 			executorService.submit(() -> executeQuery(q,result));
+		executorService.shutdown();
 		try {
-			executorService.awaitTermination(100, TimeUnit.SECONDS);
+			if(!executorService.awaitTermination(30, TimeUnit.SECONDS))
+				executorService.shutdownNow();
 		} catch (InterruptedException e) {
+			executorService.shutdownNow();
 			e.printStackTrace();
 		}
-		executorService.shutdown();
+		
 		return result;
 		
 	}
