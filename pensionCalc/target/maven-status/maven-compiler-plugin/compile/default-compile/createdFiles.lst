@@ -1,3 +1,4 @@
 com\vitech\pensionCalc\controller\CalcController.class
+com\vitech\pensionCalc\config\Configuration.class
 com\vitech\pensionCalc\PensionCalcApplication.class
 com\vitech\pensionCalc\service\CalcService.class
