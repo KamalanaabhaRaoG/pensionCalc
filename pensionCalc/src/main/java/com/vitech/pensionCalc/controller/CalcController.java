@@ -27,7 +27,7 @@ public class CalcController {
 		Map<String,String> result =  calcservice.calcPensionHistory(memberId);
 		long endTime = System.currentTimeMillis();
 		Long executionTime = endTime - startTime;
-		return executionTime.toString();
+		return ""+executionTime.toString()+" \n /n "+ result.toString();
 	}
 
 }
