@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.vitech.pensionCalc.PensionCalcApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 52.412 s <<< FAILURE! - in com.vitech.pensionCalc.PensionCalcApplicationTests
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 63.846 s <<< FAILURE! - in com.vitech.pensionCalc.PensionCalcApplicationTests
 contextLoads  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'todosEntityManagerFactory' defined in class path resource [com/vitech/pensionCalc/config/JpaConfiguration.class]: Unsatisfied dependency expressed through method 'todosEntityManagerFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'getDataSource' defined in class path resource [com/vitech/pensionCalc/config/AlloyDBConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'getDataSource' threw exception; nested exception is com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Something unusual has occurred to cause the driver to fail. Please report this exception.

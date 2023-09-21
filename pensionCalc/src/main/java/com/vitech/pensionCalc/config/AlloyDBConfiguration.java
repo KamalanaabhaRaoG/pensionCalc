@@ -35,7 +35,7 @@ public class AlloyDBConfiguration {
 	        "com.google.cloud.alloydb.SocketFactory");
 	    // Tell the Java Connector which instance to connect to.
 	    config.addDataSourceProperty("alloydbInstanceName",
-	       "projects/testalloydb-399019/locations/us-central1/clusters/my-cluster/instances/my-primary");
+	       "projects/testalloydb-399019/locations/us-central1-b/clusters/my-cluster/instances/my-primary");
 
 	   return new HikariDataSource(config);
 	  }
