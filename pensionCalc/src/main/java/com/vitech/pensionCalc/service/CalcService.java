@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 import javax.persistence.EntityManager;
@@ -20,11 +21,12 @@ public class CalcService {
 	@Autowired
 	private EntityManager entityManager;
 	
-	public Map<String,String> calcPensionHistory(String memberId) {
+	public String calcPensionHistory(String memberId) {
 		Map<String,String> result = new HashMap<>();
 		StringBuilder query = null;
 		List<String> queryList = new ArrayList<>();
-		ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+		Integer availableThreads = Runtime.getRuntime().availableProcessors();
+		ExecutorService executorService = Executors.newFixedThreadPool(availableThreads);
 		for(int i=1;i<=50;i++) {
 			query = new StringBuilder();
 			query.append("select sum(column_amount_");
@@ -46,18 +48,21 @@ public class CalcService {
 			query.append(") from pension_history where member_id=").append(memberId);
 			queryList.add(query.toString());
 		}
-		for(String q:queryList)
+		
+			for(String q:queryList) {
 			executorService.submit(() -> executeQuery(q,result));
+		}
+		
 		executorService.shutdown();
-		try {
+		/*try {
 			if(!executorService.awaitTermination(30, TimeUnit.SECONDS))
 				executorService.shutdownNow();
 		} catch (InterruptedException e) {
 			executorService.shutdownNow();
 			e.printStackTrace();
-		}
+		}*/
 		
-		return result;
+		return availableThreads.toString();
 		
 	}
 	

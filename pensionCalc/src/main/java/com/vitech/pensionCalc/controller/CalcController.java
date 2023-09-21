@@ -24,7 +24,7 @@ public class CalcController {
 	@RequestMapping(value="/historyCalc/{memberId}",method=RequestMethod.GET)
 	public String testEndPoint(@PathVariable String memberId) {
 		long startTime = System.currentTimeMillis();
-		Map<String,String> result =  calcservice.calcPensionHistory(memberId);
+		String result =  calcservice.calcPensionHistory(memberId);
 		long endTime = System.currentTimeMillis();
 		Long executionTime = endTime - startTime;
 		return ""+executionTime.toString()+" \n /n "+ result.toString();
