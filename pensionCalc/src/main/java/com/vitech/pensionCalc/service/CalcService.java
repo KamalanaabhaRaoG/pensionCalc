@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.EntityManager;
 
@@ -47,6 +48,11 @@ public class CalcService {
 		}
 		for(String q:queryList)
 			executorService.submit(() -> executeQuery(q,result));
+		try {
+			executorService.awaitTermination(100, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		executorService.shutdown();
 		return result;
 		
