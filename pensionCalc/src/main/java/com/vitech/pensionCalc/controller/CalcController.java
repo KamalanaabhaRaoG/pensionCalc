@@ -38,6 +38,15 @@ public class CalcController {
 		Long executionTime = endTime - startTime;
 		return ""+executionTime.toString()+" \n /n "+ result.toString();
 	}
+	
+	@RequestMapping(value="/pensionHistoryCalc/{memberId}",method=RequestMethod.GET)
+	public String pensionHistoryCalc(@PathVariable String memberId) {
+		long startTime = System.currentTimeMillis();
+		String result =  calcservice.calcPensionHistoryPGMod(memberId);
+		long endTime = System.currentTimeMillis();
+		Long executionTime = endTime - startTime;
+		return ""+executionTime.toString()+" \n /n "+ result.toString();
+	}
 
 
 }

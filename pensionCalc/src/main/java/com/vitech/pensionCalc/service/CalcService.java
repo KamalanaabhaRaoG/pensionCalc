@@ -66,6 +66,51 @@ public class CalcService {
 		
 	}
 	
+	public String calcPensionHistoryPGMod(String memberId) {
+		Map<String,String> result = new HashMap<>();
+		StringBuilder query = null;
+		List<String> queryList = new ArrayList<>();
+		Integer availableThreads = Runtime.getRuntime().availableProcessors();
+		ExecutorService executorService = Executors.newFixedThreadPool(availableThreads);
+		for(int i=1;i<=50;i++) {
+			query = new StringBuilder();
+			query.append("select sum(column_amount_");
+			if(i<10)
+				query.append("0").append(i);
+			else
+				query.append(i);
+			query.append(") from pension_history_hack where member_id=").append(memberId);
+			queryList.add(query.toString());
+			
+		}
+		for(int i=1;i<=50;i++) {
+			query = new StringBuilder();
+			query.append("select sum(col_num_");
+			if(i<10)
+				query.append("0").append(i);
+			else
+				query.append(i);
+			query.append(") from pension_history_hack where member_id=").append(memberId);
+			queryList.add(query.toString());
+		}
+		
+			for(String q:queryList) {
+			executorService.submit(() -> executeQuery(q,result));
+		}
+		
+		executorService.shutdown();
+		try {
+			if(!executorService.awaitTermination(30, TimeUnit.SECONDS))
+				executorService.shutdownNow();
+		} catch (InterruptedException e) {
+			executorService.shutdownNow();
+			e.printStackTrace();
+		}
+		
+		return availableThreads.toString();
+		
+	}
+	
 	
 	public String calcPensionHistoryILSurs(String memberId) {
 		Map<String,String> result = new HashMap<>();

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.vitech.pensionCalc.PensionCalcApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.278 s - in com.vitech.pensionCalc.PensionCalcApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.758 s - in com.vitech.pensionCalc.PensionCalcApplicationTests
