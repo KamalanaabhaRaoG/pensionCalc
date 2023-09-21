@@ -25,6 +25,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+		  <groupId>com.google.cloud</groupId>
+		  <artifactId>alloydb-jdbc-connector</artifactId>
+		  <version>0.1.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		   <groupId>com.zaxxer</groupId>
+		   <artifactId>HikariCP</artifactId>
+		   <version>5.0.2-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>

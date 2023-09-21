@@ -1,3 +1,5 @@
 com\vitech\pensionCalc\controller\CalcController.class
+com\vitech\pensionCalc\config\JpaConfiguration.class
 com\vitech\pensionCalc\PensionCalcApplication.class
 com\vitech\pensionCalc\service\CalcService.class
+com\vitech\pensionCalc\config\AlloyDBConfiguration.class
