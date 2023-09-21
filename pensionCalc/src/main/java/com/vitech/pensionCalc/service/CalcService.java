@@ -47,6 +47,7 @@ public class CalcService {
 		}
 		for(String q:queryList)
 			executorService.submit(() -> executeQuery(q,result));
+		executorService.shutdown();
 		return result;
 		
 	}
